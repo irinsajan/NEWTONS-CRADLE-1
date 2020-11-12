@@ -7,11 +7,9 @@ class Rope {
         var options = {
             bodyA: body1,
             bodyB: body2,
-            pointB:{x:this.offsetX, y:this.offsetY},
-            stiffness: 0.4,
-            length: 0.04
+            pointB:{x:this.offsetX, y:this.offsetY}            
         }
-        this.rope = options;
+        this.rope = Matter.Constraint.create(options);
         World.add(world,this.rope);
     }
 
@@ -19,6 +17,6 @@ class Rope {
         var posA = this.rope.bodyA.position;
         var posB = this.rope.bodyB.position;
         strokeWeight(3);
-        line(posA.x, posA.y, posB.x, posB.y);
+        line(posA.x, posA.y, posB.x+this.offsetX, posB.y);
     }
 }
